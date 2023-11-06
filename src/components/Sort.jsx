@@ -3,9 +3,12 @@ import { useState } from "react";
 function Sort(props) {
   const [open, setOpen] = useState(false);
   const sorts = [
-    { name: "популярности", sortProperty: "rating" },
-    { name: "цене", sortProperty: "price" },
-    { name: "алфавиту", sortProperty: "title" },
+    { name: "популярности ▼", sortProperty: "rating" },
+    { name: "популярности ▲", sortProperty: "-rating" },
+    { name: "цене ▼", sortProperty: "price" },
+    { name: "цене ▲", sortProperty: "-price" },
+    { name: "алфавиту ▼", sortProperty: "title" },
+    { name: "алфавиту ▲", sortProperty: "-title" },
   ];
 
   const onClickActiveSort = (sortType) => {
