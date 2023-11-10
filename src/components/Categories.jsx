@@ -14,7 +14,7 @@ function Categories(props) {
         {categories.map((category, index) => {
           return (
             <li
-              onClick={() => props.setCategoryId(index)}
+              onClick={() => props.onChangeCategory(index)}
               className={props.categoryId === index ? "active" : ""}
               key={category}
             >
