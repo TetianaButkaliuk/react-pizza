@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
+import qs from "qs";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -17,6 +19,7 @@ const Home = () => {
   );
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { searchValue } = useContext(SearchContext);
 
@@ -47,6 +50,21 @@ const Home = () => {
       });
     window.scrollTo(0, 0);
   }, [categoryId, sort, searchValue, currentPage]);
+
+  useEffect(() => {
+    const queryString = qs.stringify({
+      sortProperty: sort.sortProperty,
+      categoryId,
+      currentPage,
+    });
+    navigate(`?${queryString}`);
+  }, [categoryId, sort.sortProperty, currentPage]);
+
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+    }
+  }, []);
 
   const pizzas = items.map((item) => {
     return <PizzaBlock {...item} key={item.id} />;

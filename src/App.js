@@ -14,8 +14,6 @@ export const SearchContext = React.createContext("");
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
-  // const count = useSelector((state) => state.filter.value);
-  // const dispatch = useDispatch();
 
   return (
     <div className="App">
